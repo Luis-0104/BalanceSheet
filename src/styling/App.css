@@ -32,13 +32,17 @@
   }
 }
 
+.hdiv{
+  display: flex;
+}
+
 #addButton{
   background-color: rgb(255, 255, 255);
   font-size: large;
-  height: fit-content;
+  height: 100%;
   aspect-ratio: 1;
   padding:10px;
-  margin: 20px;
+  margin: 0;
 }
 #addButton:hover{
   background-color: rgb(94, 219, 121);

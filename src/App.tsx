@@ -1,16 +1,30 @@
+import './styling/App.css'
+import {SearchBar} from './components/SearchBar'
+import { PersonsList } from './components/PersonsList'
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { AddNewPerson } from './components/AddNewPerson'
 
 function App() {
-  
+  const [showAddMenu, setShowAddMenu] = useState(false);
+  function toggleShowAddMenu(){
+    setShowAddMenu(!showAddMenu);
+    console.log('toggled')
+  }
+
 
   return (
     <div className="App">
       <h1>BalanceSheet</h1>
-      <div>
-        <button id ="addButton">+</button>
+      <div className="hdiv" id="topBar">
+        <div>
+          <button id="addButton" onClick={(evt)=>{toggleShowAddMenu() }}>+</button>
+        </div>
+        <div>
+          <SearchBar></SearchBar>
+        </div>
       </div>
+      <AddNewPerson showAddMenu={showAddMenu} toggleShowAddMenu={toggleShowAddMenu}></AddNewPerson>
+      <PersonsList></PersonsList>
     </div>
   )
 }
