@@ -32,6 +32,21 @@
   }
 }
 
+#addButton{
+  background-color: rgb(255, 255, 255);
+  font-size: large;
+  height: fit-content;
+  aspect-ratio: 1;
+  padding:10px;
+  margin: 20px;
+}
+#addButton:hover{
+  background-color: rgb(94, 219, 121);
+  aspect-ratio: 1;
+  
+}
+
+
 .card {
   padding: 2em;
 }
