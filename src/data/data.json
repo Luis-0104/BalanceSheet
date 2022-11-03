@@ -1,20 +1,3 @@
-[{"id":1,"first_name":"Babara","email":"bmatisse0@i2i.jp","balance":6},
-{"id":2,"first_name":"Aylmar","email":"aalman1@weebly.com","balance":2},
-{"id":3,"first_name":"Louisa","email":"lelks2@businessweek.com","balance":4},
-{"id":4,"first_name":"Chariot","email":"cnormington3@reference.com","balance":16},
-{"id":5,"first_name":"Adria","email":"asproul4@jugem.jp","balance":6},
-{"id":6,"first_name":"Regan","email":"rwoolley5@earthlink.net","balance":2},
-{"id":7,"first_name":"Veriee","email":"vthowes6@issuu.com","balance":17},
-{"id":8,"first_name":"Tedman","email":"tbostock7@eventbrite.com","balance":3},
-{"id":9,"first_name":"Leontine","email":"lkelle8@skyrock.com","balance":1},
-{"id":10,"first_name":"Charmian","email":"ctomsa9@wikipedia.org","balance":8},
-{"id":11,"first_name":"Ferris","email":"fmahera@t-online.de","balance":19},
-{"id":12,"first_name":"Ingelbert","email":"ibernb@thetimes.co.uk","balance":17},
-{"id":13,"first_name":"Loralie","email":"lrobkenc@kickstarter.com","balance":5},
-{"id":14,"first_name":"Georgina","email":"gbraleyd@pinterest.com","balance":3},
-{"id":15,"first_name":"Gerhardine","email":"gbalstonee@dmoz.org","balance":8},
-{"id":16,"first_name":"Antone","email":"amccauleyf@surveymonkey.com","balance":6},
-{"id":17,"first_name":"Brig","email":"bgirardezg@virginia.edu","balance":11},
-{"id":18,"first_name":"Terrel","email":"tbroxaph@cdbaby.com","balance":5},
-{"id":19,"first_name":"Blakelee","email":"bshieldsi@eepurl.com","balance":2},
-{"id":20,"first_name":"Rollin","email":"rmelonbyj@altervista.org","balance":11}]
+[{"id":0,"first_name":"Foo Bar","email":"mail@example.com","balance":187}
+
+]

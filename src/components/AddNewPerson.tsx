@@ -1,5 +1,6 @@
-import { ReactNode, useState } from 'react';
-import data from '../data/data.json'
+import { ReactNode, useEffect, useState } from 'react';
+import DefaultData from '../data/data.json'; 
+
 
 type AddNewPersonProps = {
     showAddMenu: boolean;
@@ -14,6 +15,16 @@ export function AddNewPerson({ showAddMenu, toggleShowAddMenu }: AddNewPersonPro
     const [balanceInput, setBalanceInput] = useState(0)
     const [inputHint, setInputHint] = useState('')
 
+    // var data = ...localStorage.getItem('data')
+    var data: { id: any; first_name: string; email: string; balance: number; }[];
+    if(localStorage.getItem('data')==null){
+        data = DefaultData;
+        console.log('using default data')
+    }else{
+        let dataString = localStorage.getItem('data')
+        data = JSON.parse(dataString as string)
+    }
+    
     function checkNameInput() {
         //check if name is empty
         if (nameInput == '') {
@@ -37,7 +48,6 @@ export function AddNewPerson({ showAddMenu, toggleShowAddMenu }: AddNewPersonPro
         return true;
 
     }
-
 
     function checkEmailInput() {
         // check if email is empty
@@ -91,8 +101,29 @@ export function AddNewPerson({ showAddMenu, toggleShowAddMenu }: AddNewPersonPro
     }
 
     function addPerson() { 
-        checkInput();
+        if(!checkInput()) return;
+        data.push({
+            id: data.length,
+            first_name: nameInput,
+            email: emailInput,
+            balance: balanceInput
+        })
+        const jsonString = JSON.stringify(data);
+        
+        localStorage.setItem('data', jsonString)
+
+        setInputHint(`Succesfully added ${nameInput} to the system!`)
+        setTimeout(() => {
+            setInputHint('')
+            toggleShowAddMenu()
+        }, 3000);
+
     }
+
+    useEffect(()=>{
+        setInputHint('');
+        console.log('useeffect triggered');
+    },[showAddMenu])
 
     if (!showAddMenu) {
         return <></>
