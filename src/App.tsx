@@ -11,6 +11,8 @@ function App() {
     console.log('toggled')
   }
 
+  const [searchTerm, setSearchTerm] = useState('')
+
 
   return (
     <div className="App">
@@ -20,11 +22,11 @@ function App() {
           <button id="addButton" onClick={(evt)=>{toggleShowAddMenu() }}>+</button>
         </div>
         <div>
-          <SearchBar></SearchBar>
+          <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm}></SearchBar>
         </div>
       </div>
       <AddNewPerson showAddMenu={showAddMenu} toggleShowAddMenu={toggleShowAddMenu}></AddNewPerson>
-      <PersonsList></PersonsList>
+      <PersonsList searchTerm={searchTerm}></PersonsList>
     </div>
   )
 }
