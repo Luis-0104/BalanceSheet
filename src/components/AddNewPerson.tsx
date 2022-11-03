@@ -116,6 +116,7 @@ export function AddNewPerson({ showAddMenu, toggleShowAddMenu }: AddNewPersonPro
         setTimeout(() => {
             setInputHint('')
             toggleShowAddMenu()
+            location.reload()
         }, 3000);
 
     }

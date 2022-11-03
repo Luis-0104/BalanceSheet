@@ -8,7 +8,6 @@ function App() {
   const [showAddMenu, setShowAddMenu] = useState(false);
   function toggleShowAddMenu(){
     setShowAddMenu(!showAddMenu);
-    console.log('toggled')
   }
 
   const [searchTerm, setSearchTerm] = useState('')
