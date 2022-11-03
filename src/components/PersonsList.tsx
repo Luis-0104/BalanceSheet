@@ -1,4 +1,5 @@
 import DefaultData from '../data/data.json'
+import { PersonInList } from './PersonInList';
 type PersonsListProps = {
     searchTerm: string;
 }
@@ -34,11 +35,10 @@ export function PersonsList({ searchTerm }: PersonsListProps) {
 
     return <div>
         {filteredData.map(
-            (val) => <div>
-                <button>
-                    {val.first_name + '   -   ' + val.balance + '€'}
-                </button>
-            </div>
+            (val) => <PersonInList data={val}></PersonInList>
+            
+            
         )}
+         
     </div>
 }
