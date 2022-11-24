@@ -1,6 +1,6 @@
 import { Instance, onSnapshot, types } from "mobx-state-tree";
 import { createContext, useContext } from "react";
-import { PersonList } from "./personStore";
+import { PersonList } from "./personList";
 
 const RootModel = types.model({
   personList: PersonList,
