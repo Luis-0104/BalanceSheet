@@ -8,7 +8,7 @@ type PersonsListProps = {
 
 export function PersonsList({ searchTerm }: PersonsListProps) {
 
-    var data: { id: any; first_name: string; email: string; balance: number; }[];
+    var data: { id: any; name: string; email: string; balance: number; }[];
     if(localStorage.getItem('data')==null){
         data = DefaultData;
         console.log('using default data')

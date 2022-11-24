@@ -16,7 +16,7 @@ export function AddNewPerson({ showAddMenu, toggleShowAddMenu }: AddNewPersonPro
     const [inputHint, setInputHint] = useState('')
 
     // var data = ...localStorage.getItem('data')
-    var data: { id: any; first_name: string; email: string; balance: number; }[];
+    var data: { id: any; name: string; email: string; balance: number; }[];
     if(localStorage.getItem('data')==null){
         data = DefaultData;
         console.log('using default data')
@@ -34,7 +34,7 @@ export function AddNewPerson({ showAddMenu, toggleShowAddMenu }: AddNewPersonPro
 
         // check if name is taken
         for (let element of data) {
-            if (element.first_name == nameInput) {
+            if (element.name == nameInput) {
                 setInputHint(`Your chosen name: ${nameInput} is already taken!`);
                 return false;
             }
@@ -104,7 +104,7 @@ export function AddNewPerson({ showAddMenu, toggleShowAddMenu }: AddNewPersonPro
         if(!checkInput()) return;
         data.push({
             id: data.length,
-            first_name: nameInput,
+            name: nameInput,
             email: emailInput,
             balance: balanceInput
         })

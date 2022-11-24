@@ -3,7 +3,7 @@ import { useState } from "react";
 type personInListProps = {
     data: {
         id: any;
-        first_name: string;
+        name: string;
         email: string;
         balance: number;
     }
@@ -26,7 +26,7 @@ export function PersonInList({ data }: personInListProps) {
 
     return <div>
         <button onClick={(evt)=>{toggleShowPersonMenu()}}>
-            {data.first_name + '   -   ' + data.balance + '€'}
+            {data.name + '   -   ' + data.balance + '€'}
         </button>
         {PersonMenu()}
         
