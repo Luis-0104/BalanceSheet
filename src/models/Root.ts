@@ -20,6 +20,7 @@ let initialState = RootModel.create({
 });
 
 // TODO: insert data via JSON, or cookies
+// var data = ...localStorage.getItem('data')
 const rootStoreInstance = initialState;
 
 onSnapshot(rootStoreInstance, (snapshot) => {
