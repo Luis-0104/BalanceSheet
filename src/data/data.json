@@ -8,5 +8,6 @@
         "balance": 69
       }
     ]
-  }
+  },
+  "searchTerm": { "val": "", "isAdmin": false }
 }

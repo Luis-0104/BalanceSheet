@@ -3,6 +3,7 @@ type dataProps = {
   personList: {
     persons: { id: number; name: string; email: string; balance: number }[];
   };
+  searchTerm: { val: string; isAdmin: boolean };
 };
 
 export const loadData = (): dataProps => {
@@ -25,5 +26,5 @@ export const saveData = (data: dataProps) => {
 
   //   Async OP: timer of 1500ms should be enough, BUT
   //TODO: Use Promises / or something else
-//You need to get it from a node server (running on another localhost port)
+  //You need to get it from a node server (running on another localhost port)
 };

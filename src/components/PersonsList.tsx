@@ -1,21 +1,19 @@
 import { observer } from "mobx-react-lite";
 import { useRootStore } from "../models/Root";
 import { PersonInList } from "./PersonInList";
-type PersonsListProps = {
-  searchTerm: string;
-};
 
-export const PersonsList = observer(({ searchTerm }: PersonsListProps) => {
+
+export const PersonsList = observer(() => {
   const {
-    store: { personList },
+    store: { personList, searchTerm },
   } = useRootStore();
 
   var filteredData = personList.persons.filter((element) => {
-    if (searchTerm == "") {
+    if (searchTerm.val == "") {
       return true;
     } else {
       for (let val of Object.values(element)) {
-        if (JSON.stringify(val).includes(searchTerm)) {
+        if (JSON.stringify(val).includes(searchTerm.val)) {
           return true;
         }
       }

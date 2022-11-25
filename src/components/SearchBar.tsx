@@ -1,21 +1,23 @@
+import { useRootStore } from "../models/Root";
+import "./styling/SearchBar.css";
 
-import './styling/SearchBar.css'
-
-type SearchBarProps = {
-    searchTerm: string;
-    setSearchTerm: (searchTerm: string) => void;
-}
-
-export function SearchBar({ searchTerm, setSearchTerm }: SearchBarProps) {
-    return <div id="searchBarContainer" className='hdiv'>
-        <div>
-            <input id="searchField" placeholder='Search...' onChange={(evt) => {
-                    setSearchTerm(evt.target.value)
-                }
-            }>
-                
-            </input>
-        </div>
-
+export function SearchBar() {
+    
+  const {
+    store: { searchTerm },
+  } = useRootStore();
+  searchTerm.updateVal("")
+  return (
+    <div id="searchBarContainer" className="hdiv">
+      <div>
+        <input
+          id="searchField"
+          placeholder="Search..."
+          onChange={(evt) => {
+            searchTerm.updateVal(evt.target.value);
+          }}
+        ></input>
+      </div>
     </div>
+  );
 }
