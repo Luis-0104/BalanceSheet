@@ -1,10 +1,11 @@
+import { observer } from "mobx-react-lite";
 import { useRootStore } from "../models/Root";
 import { PersonInList } from "./PersonInList";
 type PersonsListProps = {
   searchTerm: string;
 };
 
-export function PersonsList({ searchTerm }: PersonsListProps) {
+export const PersonsList = observer(({ searchTerm }: PersonsListProps) => {
   const {
     store: { personList },
   } = useRootStore();
@@ -28,4 +29,4 @@ export function PersonsList({ searchTerm }: PersonsListProps) {
       ))}
     </div>
   );
-}
+});
