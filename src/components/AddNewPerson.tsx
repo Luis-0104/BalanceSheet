@@ -1,5 +1,4 @@
 import { ReactNode, useEffect, useState } from "react";
-import DefaultData from "../data/data.json";
 import { useRootStore } from "../models/Root";
 
 type AddNewPersonProps = {
@@ -19,7 +18,6 @@ export function AddNewPerson({
     store: { personList },
   } = useRootStore();
 
-  // var data = ...localStorage.getItem('data')
   let data = personList.persons;
 
   function checkNameInput() {
@@ -108,26 +106,21 @@ export function AddNewPerson({
   function addPerson() {
     if (!checkInput()) return;
     personList.addPerson({
-        id: data.length,
-        name: nameInput,
-        email: emailInput,
-        balance: balanceInput,
-      })
-    // const jsonString = JSON.stringify(data);
-
-    // localStorage.setItem("data", jsonString);
+      id: data.length,
+      name: nameInput,
+      email: emailInput,
+      balance: balanceInput,
+    });
 
     setInputHint(`Succesfully added ${nameInput} to the system!`);
     setTimeout(() => {
       setInputHint("");
       toggleShowAddMenu();
-      location.reload();
-    }, 3000);
+    }, 1500);
   }
 
   useEffect(() => {
     setInputHint("");
-    console.log("useeffect triggered");
   }, [showAddMenu]);
 
   if (!showAddMenu) {

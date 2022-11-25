@@ -1,44 +1,31 @@
-import DefaultData from '../data/data.json'
-import { PersonInList } from './PersonInList';
+import { useRootStore } from "../models/Root";
+import { PersonInList } from "./PersonInList";
 type PersonsListProps = {
-    searchTerm: string;
-}
-
-
+  searchTerm: string;
+};
 
 export function PersonsList({ searchTerm }: PersonsListProps) {
+  const {
+    store: { personList },
+  } = useRootStore();
 
-    var data: { id: any; name: string; email: string; balance: number; }[];
-    if(localStorage.getItem('data')==null){
-        data = DefaultData;
-        console.log('using default data')
-    }else{
-        let dataString = localStorage.getItem('data')
-        data =JSON.parse(dataString as string)
+  var filteredData = personList.persons.filter((element) => {
+    if (searchTerm == "") {
+      return true;
+    } else {
+      for (let val of Object.values(element)) {
+        if (JSON.stringify(val).includes(searchTerm)) {
+          return true;
+        }
+      }
     }
+  });
 
-    var filteredData = data.filter((element) => {
-        if(searchTerm==''){
-            return true;
-          }else{
-            for(let val of Object.values(element) ){
-              if(JSON.stringify(val).includes(searchTerm)){
-                return true;
-              }
-            }
-            
-          }
-    })
-
-
-
-
-    return <div>
-        {filteredData.map(
-            (val) => <PersonInList data={val}></PersonInList>
-            
-            
-        )}
-         
+  return (
+    <div>
+      {filteredData.map((val) => (
+        <PersonInList key={val.id} person={val}></PersonInList>
+      ))}
     </div>
+  );
 }

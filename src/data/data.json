@@ -1,3 +1,12 @@
-[{"id":0,"name":"Foo Bar","email":"mail@example.com","balance":187}
-
-]
+{
+  "personList": {
+    "persons": [
+      {
+        "id": 0,
+        "name": "fooBar",
+        "email": "foobar@example.com",
+        "balance": 69
+      }
+    ]
+  }
+}
