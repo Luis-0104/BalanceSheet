@@ -1,4 +1,3 @@
-var fs = require("fs");
 import savedData from "./data.json";
 type dataProps = {
   personList: {
