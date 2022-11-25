@@ -12,8 +12,8 @@ export const PersonsList = observer(() => {
     if (searchTerm.val == "") {
       return true;
     } else {
-      for (let val of Object.values(element)) {
-        if (JSON.stringify(val).includes(searchTerm.val)) {
+      for (let personProp of Object.values(element)) {
+        if (JSON.stringify(personProp).includes(searchTerm.val)) {
           return true;
         }
       }
@@ -23,7 +23,7 @@ export const PersonsList = observer(() => {
   return (
     <div>
       {filteredData.map((val) => (
-        <PersonInList key={val.id} person={val}></PersonInList>
+        <PersonInList key={val.id} person={val} searchTerm = {searchTerm}></PersonInList>
       ))}
     </div>
   );

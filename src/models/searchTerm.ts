@@ -10,10 +10,11 @@ export const Searchterm = types
       //TODO: Checking for pw, now its just an easteregg
       if (newVal === "asdf") {
         self.isAdmin = true;
+        console.log("Hello There, fellow Admin!")
       }
       self.val = newVal;
     },
-    exitAdmin(){
-        self.isAdmin=false;
-    }
+    exitAdmin() {
+      self.isAdmin = false;
+    },
   }));

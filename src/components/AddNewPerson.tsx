@@ -1,19 +1,28 @@
+import { observer } from "mobx-react-lite";
 import { ReactNode, useEffect, useState } from "react";
 import { useRootStore } from "../models/Root";
 
-
-
-export function AddNewPerson() {
+export const AddNewPerson = observer(() => {
   const [nameInput, setNameInput] = useState("");
   const [emailInput, setEmailInput] = useState("");
   const [balanceInput, setBalanceInput] = useState(0);
   const [inputHint, setInputHint] = useState("");
   const {
-    store: { personList },
+    store: {
+      personList,
+      searchTerm: { isAdmin, exitAdmin },
+    },
   } = useRootStore();
   const [showAddMenu, setShowAddMenu] = useState(false);
-  function toggleShowAddMenu(){
+  function toggleShowAddMenu() {
     setShowAddMenu(!showAddMenu);
+  }
+  useEffect(() => {
+    setInputHint("");
+  }, [showAddMenu]);
+
+  if (!isAdmin) {
+    return <></>;
   }
 
   let data = personList.persons;
@@ -117,56 +126,82 @@ export function AddNewPerson() {
     }, 1500);
   }
 
-  useEffect(() => {
-    setInputHint("");
-  }, [showAddMenu]);
-
   if (!showAddMenu) {
-    return <> <button id="addButton" onClick={(evt)=>{toggleShowAddMenu() }}>+</button></>;
+    return (
+      <>
+        {" "}
+        <button
+          id="addButton"
+          onClick={(evt) => {
+            toggleShowAddMenu();
+          }}
+        >
+          +
+        </button>
+        <button
+        id="exitAdminButton"
+        onClick={(evt) => {
+          exitAdmin();
+        }}
+      >
+        exit
+      </button>
+      </>
+    );
   }
 
   return (
-    <> <button id="addButton" onClick={(evt)=>{toggleShowAddMenu() }}>+</button>
-    <div id="AddNewPersonContainer">
-      <input
-        placeholder="Name"
-        id="nameInput"
-        onChange={(evt) => setNameInput(evt.target.value)}
-        onBlur={(evt) => {
-          checkNameInput();
-        }}
-      ></input>
-      <input
-        placeholder="email"
-        id="emailInput"
-        type="email"
-        onChange={(evt) => setEmailInput(evt.target.value)}
-        onBlur={(evt) => {
-          checkEmailInput();
-        }}
-      ></input>
-      <input
-        placeholder="Starting Balance"
-        id="balanceInput"
-        type="number"
-        min="0"
-        step="any"
-        onChange={(evt) => setBalanceInput(+evt.target.value)}
-        onBlur={(evt) => {
-          checkBalanceInput();
-        }}
-      ></input>
-      €
+    <>
+      {" "}
       <button
-        id="submitAddButton"
+        id="addButton"
         onClick={(evt) => {
-          addPerson();
+          toggleShowAddMenu();
         }}
       >
-        Add
+        +
       </button>
-      <div>{inputHint}</div>
-    </div>
+      
+      <div id="AddNewPersonContainer">
+        <input
+          placeholder="Name"
+          id="nameInput"
+          onChange={(evt) => setNameInput(evt.target.value)}
+          onBlur={(evt) => {
+            checkNameInput();
+          }}
+        ></input>
+        <input
+          placeholder="email"
+          id="emailInput"
+          type="email"
+          onChange={(evt) => setEmailInput(evt.target.value)}
+          onBlur={(evt) => {
+            checkEmailInput();
+          }}
+        ></input>
+        <input
+          placeholder="Starting Balance"
+          id="balanceInput"
+          type="number"
+          min="0"
+          step="any"
+          onChange={(evt) => setBalanceInput(+evt.target.value)}
+          onBlur={(evt) => {
+            checkBalanceInput();
+          }}
+        ></input>
+        €
+        <button
+          id="submitAddButton"
+          onClick={(evt) => {
+            addPerson();
+          }}
+        >
+          Add
+        </button>
+        <div>{inputHint}</div>
+      </div>
     </>
   );
-}
+});

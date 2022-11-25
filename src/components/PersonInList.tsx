@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { balanceEmptyError } from "../errors/balanceEmptyError";
 
 type personInListProps = {
   person: {
@@ -11,9 +10,17 @@ type personInListProps = {
     changeEmail: (newEmail: string) => void;
     remove: () => void;
   };
+  searchTerm: {
+    val: string;
+    isAdmin: boolean;
+    exitAdmin: () => void;
+  };
 };
 
-export function PersonInList({ person: person }: personInListProps) {
+export function PersonInList({
+  person: person,
+  searchTerm: searchTerm,
+}: personInListProps) {
   const [showPersonMenu, setShowPersonMenu] = useState(false);
   const updateBalance = (val: number) => {
     try {
@@ -28,10 +35,21 @@ export function PersonInList({ person: person }: personInListProps) {
     setShowPersonMenu(!showPersonMenu);
   };
 
+  const deletePerson = () => {
+    if (
+      confirm(
+        `Are you sure, you want to delete ${person.name}? This action cannot be reversed!`
+      )
+    ) {
+      person.remove();
+      toggleShowPersonMenu();
+    }
+  };
+
   const PersonMenu = () => {
     if (!showPersonMenu) return <></>;
     return (
-      <div>
+      <>
         <button
           className="Getränk"
           onClick={(evt) => {
@@ -48,7 +66,42 @@ export function PersonInList({ person: person }: personInListProps) {
         >
           -1€
         </button>
-      </div>
+        {AdminMenu()}
+      </>
+    );
+  };
+
+  const AdminMenu = () => {
+    if (!searchTerm.isAdmin) return <></>;
+
+    let balanceInput = 0;
+    return (
+      <>
+        {" "}
+        <input
+          id="addBalanceField"
+          placeholder="Balance"
+          onChange={(evt) => {
+            balanceInput = +evt.target.value;
+          }}
+        ></input>
+        <button
+          className="Admin"
+          onClick={(evt) => {
+            updateBalance(balanceInput);
+          }}
+        >
+          addBalance
+        </button>
+        <button
+          className="Admin"
+          onClick={(evt) => {
+            deletePerson();
+          }}
+        >
+          DELETE
+        </button>
+      </>
     );
   };
 
@@ -61,7 +114,7 @@ export function PersonInList({ person: person }: personInListProps) {
       >
         {person.name + "   -   " + person.balance + "€"}
       </button>
-      {PersonMenu()}
+      <div>{PersonMenu()}</div>
     </div>
   );
 }

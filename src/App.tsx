@@ -1,8 +1,8 @@
 import "./styling/App.css";
 import { SearchBar } from "./components/SearchBar";
 import { PersonsList } from "./components/PersonsList";
-import { useState } from "react";
 import { AddNewPerson } from "./components/AddNewPerson";
+import { useRootStore } from "./models/Root";
 
 function App() {
   return (
