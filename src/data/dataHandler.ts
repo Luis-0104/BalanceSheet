@@ -1,4 +1,4 @@
-import { EphemeralKeyInfo } from "tls";
+var fs = require("fs");
 import savedData from "./data.json";
 type dataProps = {
   personList: {
@@ -23,4 +23,8 @@ export const loadData = (): dataProps => {
 
 export const saveData = (data: dataProps) => {
   localStorage.setItem("data", JSON.stringify(data));
+
+  //   Async OP: timer of 1500ms should be enough, BUT
+  //TODO: Use Promises / or something else
+//You need to get it from a node server (running on another localhost port)
 };
