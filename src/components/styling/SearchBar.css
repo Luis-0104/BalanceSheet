@@ -1,10 +1,13 @@
 #searchField{
     height: 100%;
+    align-items: center;
     
 }
 .hdiv{
-    display: flex;
-    align-items: center;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
   }
 #searchButton{
     aspect-ratio: 1;
