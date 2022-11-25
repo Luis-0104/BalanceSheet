@@ -1,15 +1,9 @@
 import { ReactNode, useEffect, useState } from "react";
 import { useRootStore } from "../models/Root";
 
-type AddNewPersonProps = {
-  showAddMenu: boolean;
-  toggleShowAddMenu: () => void;
-};
 
-export function AddNewPerson({
-  showAddMenu,
-  toggleShowAddMenu,
-}: AddNewPersonProps) {
+
+export function AddNewPerson() {
   const [nameInput, setNameInput] = useState("");
   const [emailInput, setEmailInput] = useState("");
   const [balanceInput, setBalanceInput] = useState(0);
@@ -17,6 +11,10 @@ export function AddNewPerson({
   const {
     store: { personList },
   } = useRootStore();
+  const [showAddMenu, setShowAddMenu] = useState(false);
+  function toggleShowAddMenu(){
+    setShowAddMenu(!showAddMenu);
+  }
 
   let data = personList.persons;
 
@@ -124,10 +122,11 @@ export function AddNewPerson({
   }, [showAddMenu]);
 
   if (!showAddMenu) {
-    return <></>;
+    return <> <button id="addButton" onClick={(evt)=>{toggleShowAddMenu() }}>+</button></>;
   }
 
   return (
+    <> <button id="addButton" onClick={(evt)=>{toggleShowAddMenu() }}>+</button>
     <div id="AddNewPersonContainer">
       <input
         placeholder="Name"
@@ -168,5 +167,6 @@ export function AddNewPerson({
       </button>
       <div>{inputHint}</div>
     </div>
+    </>
   );
 }

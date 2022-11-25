@@ -5,10 +5,7 @@ import { useState } from 'react'
 import { AddNewPerson } from './components/AddNewPerson'
 
 function App() {
-  const [showAddMenu, setShowAddMenu] = useState(false);
-  function toggleShowAddMenu(){
-    setShowAddMenu(!showAddMenu);
-  }
+  
 
   const [searchTerm, setSearchTerm] = useState('')
 
@@ -18,13 +15,14 @@ function App() {
       <h1>BalanceSheet</h1>
       <div className="hdiv" id="topBar">
         <div>
-          <button id="addButton" onClick={(evt)=>{toggleShowAddMenu() }}>+</button>
+         
+          
         </div>
         <div>
           <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm}></SearchBar>
         </div>
       </div>
-      <AddNewPerson showAddMenu={showAddMenu} toggleShowAddMenu={toggleShowAddMenu}></AddNewPerson>
+      <AddNewPerson></AddNewPerson>
       <PersonsList searchTerm={searchTerm}></PersonsList>
     </div>
   )
