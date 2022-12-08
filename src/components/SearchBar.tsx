@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useRootStore } from "../models/Root";
-import "./styling/SearchBar.css";
+
 
 export function SearchBar() {
   const {
