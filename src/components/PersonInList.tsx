@@ -1,3 +1,4 @@
+import { Button } from "@material-ui/core";
 import { useState } from "react";
 
 type personInListProps = {
@@ -50,22 +51,23 @@ export function PersonInList({
     if (!showPersonMenu) return <></>;
     return (
       <>
-        <button
+        <Button
+        variant="outlined"
           className="Getränk"
           onClick={(evt) => {
             updateBalance(-1.5);
           }}
         >
           -1,5€
-        </button>
-        <button
+        </Button>
+        <Button
           className="Getränk"
           onClick={(evt) => {
             updateBalance(-1);
           }}
         >
           -1€
-        </button>
+        </Button>
         {AdminMenu()}
       </>
     );
@@ -85,35 +87,36 @@ export function PersonInList({
             balanceInput = +evt.target.value;
           }}
         ></input>
-        <button
+        <Button
+          variant = "outlined"
           className="Admin"
           onClick={(evt) => {
             updateBalance(balanceInput);
           }}
         >
-          addBalance
-        </button>
-        <button
+          add Balance
+        </Button>
+        <Button
           className="Admin"
           onClick={(evt) => {
             deletePerson();
           }}
         >
           DELETE
-        </button>
+        </Button>
       </>
     );
   };
 
   return (
     <div>
-      <button
+      <Button
         onClick={(evt) => {
           toggleShowPersonMenu();
         }}
       >
         {person.name + "   -   " + person.balance + "€"}
-      </button>
+      </Button>
       <div>{PersonMenu()}</div>
     </div>
   );
